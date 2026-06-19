@@ -1,0 +1,951 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="color-scheme" content="dark">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResumeGram — Get Noticed. Get Hired.</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+ :root {
+ --black: #0d0d0d;
+ --white: #f0ede8;
+ --accent: #e8522a;
+ --accent2: #4a8af4;
+ --muted: #a09b96;
+ --card: #161616;
+ --border: #2a2a2a;
+ --font: 'Plus Jakarta Sans', sans-serif;
+ }
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ html { scroll-behavior: smooth; background: #0d0d0d; }
+ body {
+ background-color: #0d0d0d !important;
+ background: #0d0d0d !important;
+ color: #f0ede8 !important;
+ font-family: var(--font);
+ font-weight: 400;
+ overflow-x: hidden;
+ -webkit-text-size-adjust: 100%;
+ }
+ /* NAV */
+ nav {
+ position: fixed;
+ top: 0; left: 0; right: 0;
+ z-index: 100;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 1.1rem 4rem;
+ background: rgba(13,13,13,0.95);
+ backdrop-filter: blur(20px);
+ border-bottom: 1px solid var(--border);
+ }
+ .logo {
+ font-family: var(--font);
+ font-weight: 800;
+ font-size: 1.35rem;
+ letter-spacing: -0.02em;
+ color: var(--white);
+ text-decoration: none;
+ }
+ .logo span { color: var(--accent); }
+ nav ul { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+ nav ul a {
+ color: var(--muted);
+ text-decoration: none;
+ font-size: 0.88rem;
+ font-weight: 500;
+ transition: color 0.2s;
+ }
+ nav ul a:hover { color: var(--white); }
+ .nav-cta {
+ background: var(--accent) !important;
+ color: var(--white) !important;
+ padding: 0.55rem 1.3rem;
+ border-radius: 6px;
+ font-weight: 600 !important;
+ }
+ /* HERO */
+ .hero {
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ padding: 9rem 2rem 5rem;
+ position: relative;
+ overflow: hidden;
+ background-color: #0d0d0d;
+ }
+ .hero-bg {
+ position: absolute;
+ inset: 0;
+ background:
+ radial-gradient(ellipse 70% 45% at 50% 0%, rgba(232,82,42,0.12) 0%, transparent 60%),
+ radial-gradient(ellipse 50% 40% at 85% 85%, rgba(42,106,232,0.06) 0%, transparent 50%);
+ pointer-events: none;
+ }
+ .hero-tag {
+ display: inline-flex;
+ align-items: center;
+ gap: 0.5rem;
+ background: rgba(232,82,42,0.1);
+ border: 1px solid rgba(232,82,42,0.22);
+ color: #f0845e;
+ font-size: 0.75rem;
+ font-weight: 600;
+ letter-spacing: 0.07em;
+ text-transform: uppercase;
+ padding: 0.38rem 1rem;
+ border-radius: 100px;
+ margin-bottom: 2.2rem;
+ animation: fadeUp 0.5s ease both;
+ }
+ .hero-tag::before {
+ content: '';
+ width: 6px; height: 6px;
+ background: var(--accent);
+ border-radius: 50%;
+ animation: blink 2s infinite;
+ }
+ @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+ h1 {
+ font-family: var(--font);
+ font-weight: 800;
+ font-size: clamp(2.8rem, 6.5vw, 5.8rem);
+ line-height: 1.06;
+ letter-spacing: -0.03em;
+ margin-bottom: 1.6rem;
+ animation: fadeUp 0.5s 0.08s ease both;
+ color: #f0ede8 !important;
+ }
+ h1 em { font-style: normal; color: var(--accent); }
+ .hero-sub {
+ font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+ color: var(--muted);
+ font-weight: 400;
+ max-width: 500px;
+ line-height: 1.78;
+ margin-bottom: 2.5rem;
+ animation: fadeUp 0.5s 0.16s ease both;
+ }
+ .hero-sub strong { color: var(--white); font-weight: 600; }
+ .email-form {
+ display: flex;
+ gap: 0.6rem;
+ margin-bottom: 1.2rem;
+ animation: fadeUp 0.5s 0.24s ease both;
+ flex-wrap: wrap;
+ justify-content: center;
+ }
+ .email-form input {
+ background: rgba(255,255,255,0.05);
+ border: 1px solid var(--border);
+ color: var(--white);
+ font-family: var(--font);
+ font-size: 0.9rem;
+ font-weight: 400;
+ padding: 0.82rem 1.3rem;
+ border-radius: 8px;
+ width: 285px;
+ outline: none;
+ transition: border-color 0.2s;
+ }
+ .email-form input::placeholder { color: #6b6760; }
+ .email-form input:focus { border-color: rgba(232,82,42,0.45); }
+ .btn-primary {
+ background: var(--accent);
+ color: var(--white);
+ font-family: var(--font);
+ font-size: 0.9rem;
+ font-weight: 700;
+ padding: 0.82rem 1.6rem;
+ border: none;
+ border-radius: 8px;
+ cursor: pointer;
+ transition: all 0.2s;
+ display: inline-flex;
+ align-items: center;
+ gap: 0.45rem;
+ text-decoration: none;
+ white-space: nowrap;
+ letter-spacing: -0.01em;
+ }
+ .btn-primary:hover {
+ background: #d44820;
+ transform: translateY(-1px);
+ box-shadow: 0 6px 20px rgba(232,82,42,0.28);
+ }
+ .hero-note {
+ font-size: 0.78rem;
+ color: var(--muted);
+ animation: fadeUp 0.5s 0.32s ease both;
+ }
+ .hero-note strong { color: #b8b4af; font-weight: 600; }
+ .tg-badge {
+ display: inline-flex;
+ align-items: center;
+ gap: 0.45rem;
+ background: rgba(42,106,232,0.09);
+ border: 1px solid rgba(42,106,232,0.18);
+ color: #7aaaff;
+ font-size: 0.78rem;
+ font-weight: 500;
+ padding: 0.36rem 0.9rem;
+ border-radius: 100px;
+ margin-top: 1.2rem;
+ animation: fadeUp 0.5s 0.4s ease both;
+ }
+ /* STATS */
+ .stats-strip {
+ display: flex;
+ align-items: stretch;
+ justify-content: center;
+ border-top: 1px solid var(--border);
+ border-bottom: 1px solid var(--border);
+ flex-wrap: wrap;
+ }
+ .stat-item {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 0.3rem;
+ padding: 1.8rem 3.5rem;
+ border-right: 1px solid var(--border);
+ }
+ .stat-item:last-child { border-right: none; }
+ .stat-number {
+ font-size: 1.85rem;
+ font-weight: 800;
+ color: var(--white);
+ letter-spacing: -0.03em;
+ line-height: 1;
+ }
+ .stat-label {
+ font-size: 0.73rem;
+ color: var(--muted);
+ text-transform: uppercase;
+ letter-spacing: 0.07em;
+ font-weight: 500;
+ }
+ /* SECTIONS */
+ .section { padding: 6rem 4rem; max-width: 1140px; margin: 0 auto; }
+ .section-tag {
+ font-size: 0.7rem;
+ font-weight: 700;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: var(--accent);
+ margin-bottom: 1rem;
+ }
+ .section-title {
+ font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+ font-weight: 800;
+ letter-spacing: -0.03em;
+ line-height: 1.1;
+ margin-bottom: 1.2rem;
+ }
+ .section-sub {
+ color: var(--muted);
+ font-size: 0.98rem;
+ line-height: 1.75;
+ max-width: 490px;
+ }
+ /* PROBLEM */
+ .problem-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 1px;
+ background: #2a2a2a;
+ border: 1px solid var(--border);
+ border-radius: 14px;
+ overflow: hidden;
+ margin-top: 3.5rem;
+ }
+ .problem-card {
+ background: #161616;
+ padding: 2.2rem;
+ transition: background 0.25s;
+ }
+ .problem-card:hover { background: #161616; }
+ .problem-icon { font-size: 1.8rem; margin-bottom: 1.1rem; display: block; }
+ .problem-card h3 {
+ font-size: 0.98rem;
+ font-weight: 700;
+ margin-bottom: 0.65rem;
+ letter-spacing: -0.01em;
+ }
+ .problem-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.65; }
+ /* HOW IT WORKS */
+ .how-section {
+ padding: 6rem 4rem;
+ background: #161616;
+ border-top: 1px solid var(--border);
+ border-bottom: 1px solid var(--border);
+ }
+ .how-inner { max-width: 1140px; margin: 0 auto; }
+ .steps-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 2.5rem;
+ margin-top: 3.5rem;
+ }
+ .step { display: flex; flex-direction: column; gap: 0.9rem; }
+ .step-num {
+ width: 2.5rem; height: 2.5rem;
+ border-radius: 8px;
+ background: rgba(232,82,42,0.1);
+ border: 1px solid rgba(232,82,42,0.18);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 0.82rem;
+ font-weight: 800;
+ color: var(--accent);
+ }
+ .step-free {
+ display: inline-flex;
+ background: rgba(82,232,160,0.08);
+ border: 1px solid rgba(82,232,160,0.18);
+ color: #52e8a0;
+ font-size: 0.68rem;
+ font-weight: 700;
+ letter-spacing: 0.07em;
+ text-transform: uppercase;
+ padding: 0.2rem 0.6rem;
+ border-radius: 100px;
+ width: fit-content;
+ }
+ .step h3 { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
+ .step p { font-size: 0.86rem; color: var(--muted); line-height: 1.65; }
+ /* ATS DEMO */
+ .ats-demo { padding: 6rem 4rem; max-width: 1140px; margin: 0 auto; }
+ .demo-container {
+ display: grid;
+ grid-template-columns: 1fr auto 1fr;
+ gap: 1.5rem;
+ margin-top: 3.5rem;
+ align-items: center;
+ }
+ .score-card {
+ background: #161616;
+ border: 1px solid var(--border);
+ border-radius: 14px;
+ padding: 2.2rem;
+ position: relative;
+ overflow: hidden;
+ }
+ .score-card::after {
+ content: '';
+ position: absolute;
+ top: 0; left: 0; right: 0;
+ height: 2px;
+ }
+ .score-before::after { background: #e85252; }
+ .score-after::after { background: #52e8a0; }
+ .score-label {
+ font-size: 0.72rem;
+ color: var(--muted);
+ text-transform: uppercase;
+ letter-spacing: 0.08em;
+ font-weight: 600;
+ margin-bottom: 0.6rem;
+ }
+ .score-value {
+ font-size: 4.5rem;
+ font-weight: 800;
+ letter-spacing: -0.05em;
+ line-height: 1;
+ margin-bottom: 0.3rem;
+ }
+ .score-before .score-value { color: #e85252; }
+ .score-after .score-value { color: #52e8a0; }
+ .score-bar {
+ width: 100%; height: 5px;
+ background: #2a2a2a;
+ border-radius: 3px;
+ margin: 1.3rem 0;
+ overflow: hidden;
+ }
+ .score-fill { height: 100%; border-radius: 3px; }
+ .score-before .score-fill { width: 38%; background: #e85252; }
+ .score-after .score-fill { width: 84%; background: #52e8a0; }
+ .score-items { display: flex; flex-direction: column; gap: 0.55rem; }
+ .score-item {
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+ font-size: 0.81rem;
+ color: var(--muted);
+ }
+ .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+ .dot-red { background: #e85252; }
+ .dot-green { background: #52e8a0; }
+ .arrow-divider { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
+ .arrow-circle {
+ width: 2.8rem; height: 2.8rem;
+ border-radius: 50%;
+ background: var(--accent);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 0.95rem;
+ font-weight: 700;
+ color: white;
+ }
+ .arrow-text { font-size: 0.8rem; font-weight: 700; color: var(--accent); text-align: center; line-height: 1.3; }
+ /* PRICING */
+ .pricing-section {
+ padding: 6rem 4rem;
+ background: #161616;
+ border-top: 1px solid var(--border);
+ }
+ .pricing-inner { max-width: 1140px; margin: 0 auto; }
+ .pricing-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 1.2rem;
+ margin-top: 3.5rem;
+ }
+ .price-card {
+ background: #0d0d0d;
+ border: 1px solid var(--border);
+ border-radius: 14px;
+ padding: 2.2rem;
+ position: relative;
+ transition: transform 0.25s;
+ }
+ .price-card:hover { transform: translateY(-3px); }
+ .price-card.featured {
+ border-color: rgba(232,82,42,0.35);
+ background: linear-gradient(160deg, rgba(232,82,42,0.05), var(--black) 60%);
+ }
+ .popular-badge {
+ position: absolute;
+ top: -1px; left: 50%;
+ transform: translateX(-50%);
+ background: var(--accent);
+ color: white;
+ font-size: 0.63rem;
+ font-weight: 700;
+ letter-spacing: 0.09em;
+ padding: 0.26rem 0.9rem;
+ border-radius: 0 0 7px 7px;
+ text-transform: uppercase;
+ white-space: nowrap;
+ }
+ .price-tier {
+ font-size: 0.7rem;
+ font-weight: 700;
+ letter-spacing: 0.09em;
+ text-transform: uppercase;
+ color: var(--muted);
+ margin-bottom: 0.9rem;
+ }
+ .price-amount {
+ font-size: 2.7rem;
+ font-weight: 800;
+ letter-spacing: -0.04em;
+ line-height: 1;
+ margin-bottom: 0.5rem;
+ }
+ .price-free { color: var(--white); }
+ .price-basic { color: var(--accent); }
+ .price-pro { color: #6ea8ff; }
+ .price-desc { font-size: 0.83rem; color: var(--muted); margin-bottom: 1.8rem; line-height: 1.6; }
+ .price-features {
+ list-style: none;
+ display: flex;
+ flex-direction: column;
+ gap: 0.68rem;
+ margin-bottom: 2rem;
+ }
+ .price-features li {
+ display: flex;
+ align-items: flex-start;
+ gap: 0.6rem;
+ font-size: 0.84rem;
+ color: var(--muted);
+ line-height: 1.45;
+ }
+ .price-features li::before {
+ content: '✓';
+ color: var(--accent);
+ font-weight: 700;
+ flex-shrink: 0;
+ font-size: 0.8rem;
+ margin-top: 0.05rem;
+ }
+ .btn-secondary {
+ display: block; width: 100%; text-align: center;
+ padding: 0.8rem;
+ border-radius: 8px;
+ font-family: var(--font);
+ font-size: 0.87rem;
+ font-weight: 700;
+ text-decoration: none;
+ transition: all 0.2s;
+ cursor: pointer;
+ border: none;
+ letter-spacing: -0.01em;
+ }
+ .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--white); }
+ .btn-outline:hover { border-color: #444; background: rgba(255,255,255,0.03); }
+ .btn-filled { background: var(--accent); color: var(--white); }
+ .btn-filled:hover { background: #d44820; box-shadow: 0 5px 16px rgba(232,82,42,0.24); }
+ .btn-blue { background: var(--accent2); color: var(--white); }
+ .btn-blue:hover { background: #1a5ad4; box-shadow: 0 5px 16px rgba(42,106,232,0.22); }
+ /* TESTIMONIALS */
+ .testimonials { padding: 6rem 4rem; max-width: 1140px; margin: 0 auto; }
+ .testi-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 1.2rem;
+ margin-top: 3.5rem;
+ }
+ .testi-card {
+ background: #161616;
+ border: 1px solid var(--border);
+ border-radius: 14px;
+ padding: 2rem;
+ transition: border-color 0.25s;
+ }
+ .testi-card:hover { border-color: rgba(232,82,42,0.22); }
+ .stars { color: #f5a623; font-size: 0.82rem; letter-spacing: 0.05em; margin-bottom: 1rem; }
+ .testi-text { font-size: 0.88rem; color: #d4d0cb; line-height: 1.72; margin-bottom: 1.3rem; }
+ .testi-score-tag {
+ display: inline-flex;
+ background: rgba(82,232,160,0.08);
+ border: 1px solid rgba(82,232,160,0.16);
+ color: #52e8a0;
+ font-size: 0.72rem;
+ font-weight: 700;
+ padding: 0.22rem 0.68rem;
+ border-radius: 100px;
+ margin-bottom: 1.2rem;
+ }
+ .testi-author { display: flex; align-items: center; gap: 0.7rem; }
+ .testi-avatar {
+ width: 2.2rem; height: 2.2rem;
+ border-radius: 50%;
+ display: flex; align-items: center; justify-content: center;
+ font-size: 0.78rem; font-weight: 800;
+ color: white; flex-shrink: 0;
+ }
+ .av1 { background: linear-gradient(135deg,#e85252,#e88052); }
+ .av2 { background: linear-gradient(135deg,#5252e8,#52a0e8); }
+ .av3 { background: linear-gradient(135deg,#52e880,#52e8d0); color:#0a0a0a; }
+ .testi-name { font-size: 0.84rem; font-weight: 700; color: var(--white); }
+ .testi-role { font-size: 0.74rem; color: var(--muted); }
+ /* FAQ */
+ .faq-section {
+ padding: 6rem 4rem;
+ background: #161616;
+ border-top: 1px solid var(--border);
+ }
+ .faq-inner { max-width: 660px; margin: 0 auto; }
+ .faq-list { margin-top: 3.5rem; }
+ .faq-item { border-bottom: 1px solid var(--border); }
+ .faq-q {
+ width: 100%; background: none; border: none;
+ color: var(--white); font-family: var(--font);
+ font-size: 0.93rem; font-weight: 600;
+ text-align: left; padding: 1.35rem 0;
+ cursor: pointer; display: flex; align-items: center;
+ justify-content: space-between; gap: 1rem;
+ transition: color 0.2s; letter-spacing: -0.01em;
+ }
+ .faq-q:hover { color: var(--accent); }
+ .faq-icon {
+ width: 1.35rem; height: 1.35rem;
+ border-radius: 50%; border: 1px solid var(--border);
+ display: flex; align-items: center; justify-content: center;
+ font-size: 0.88rem; flex-shrink: 0;
+ transition: all 0.3s; color: var(--muted);
+ }
+ .faq-item.open .faq-icon { background: var(--accent); border-color: var(--accent); color: white; transform: rotate(45deg); }
+ .faq-a {
+ font-size: 0.87rem; color: var(--muted); line-height: 1.7;
+ max-height: 0; overflow: hidden;
+ transition: max-height 0.4s ease, padding 0.3s;
+ }
+ .faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.3rem; }
+ /* CTA */
+ .cta-section { padding: 8rem 4rem; text-align: center; position: relative; overflow: hidden; }
+ .cta-bg {
+ position: absolute; inset: 0;
+ background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(232,82,42,0.09) 0%, transparent 65%);
+ pointer-events: none;
+ }
+ .cta-section h2 {
+ font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+ font-weight: 800; letter-spacing: -0.035em;
+ line-height: 1.08; margin-bottom: 1.2rem;
+ position: relative;
+ }
+ .cta-section p { color: var(--muted); font-size: 0.98rem; margin-bottom: 2.5rem; position: relative; }
+ .cta-buttons { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; position: relative; }
+ /* FOOTER */
+ footer {
+ padding: 2.5rem 4rem;
+ border-top: 1px solid var(--border);
+ display: flex; align-items: center;
+ justify-content: space-between;
+ flex-wrap: wrap; gap: 1.5rem;
+ }
+ .footer-logo { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--white); }
+ .footer-logo span { color: var(--accent); }
+ .footer-links { display: flex; gap: 2rem; list-style: none; }
+ .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+ .footer-links a:hover { color: var(--white); }
+ .footer-copy { font-size: 0.78rem; color: var(--muted); }
+ /* ANIMATIONS */
+ @keyframes fadeUp {
+ from { opacity: 0; transform: translateY(18px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+ .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+ .reveal.visible { opacity: 1; transform: translateY(0); }
+ /* MOBILE */
+ @media (max-width: 768px) {
+ nav { padding: 1rem 1.5rem; }
+ nav ul { display: none; }
+ .section, .ats-demo, .testimonials { padding: 4rem 1.5rem; }
+ .how-section, .pricing-section, .faq-section, .cta-section { padding: 4rem 1.5rem; }
+ footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+ .problem-grid, .steps-grid, .pricing-grid, .testi-grid { grid-template-columns: 1fr; }
+ .demo-container { grid-template-columns: 1fr; }
+ .arrow-divider { flex-direction: row; padding: 1rem 0; }
+ .stats-strip { flex-direction: column; }
+ .stat-item { border-right: none; border-bottom: 1px solid var(--border); width: 100%; }
+ .stat-item:last-child { border-bottom: none; }
+ h1 { font-size: 2.5rem; }
+ .email-form { flex-direction: column; align-items: stretch; }
+ .email-form input { width: 100%; }
+ }
+</style>
+</head>
+<body style="background:#0d0d0d;color:#f0ede8;">
+<!-- NAV -->
+<nav>
+ <a href="#" class="logo">Resume<span>Gram</span></a>
+ <ul>
+ <li><a href="#how">How it works</a></li>
+ <li><a href="#pricing">Pricing</a></li>
+ <li><a href="#faq">FAQ</a></li>
+ <li><a href="#" class="nav-cta">Check My Score Free →</a></li>
+ </ul>
+</nav>
+<!-- HERO -->
+<section class="hero">
+ <div class="hero-bg"></div>
+ <div class="hero-tag">🇮🇳 2,400+ Indian Job Seekers Optimized This Month</div>
+ <h1>The Reason You're Not<br>Getting Calls Has<br><em>Nothing To Do</em> With You</h1>
+ <p class="hero-sub">
+ Your resume is being <strong>rejected by a robot</strong> before any human ever reads it. ATS systems silently filter out 75% of applicants. Find out your score — free, in 60 seconds.
+ </p>
+ <div class="email-form">
+ <input type="email" placeholder="Enter your email to get started" id="emailInput" />
+ <button class="btn-primary" id="heroBtn">
+ Find Out My ATS Score — Free
+ <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+ <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+ </svg>
+ </button>
+ </div>
+ <p class="hero-note">Takes 60 seconds · No credit card · Your resume is <strong>never stored</strong></p>
+ <div class="tg-badge">
+ <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.01 9.47c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.873.75z"/></svg>
+ Works instantly inside Telegram — no app download needed
+ </div>
+</section>
+<!-- STATS -->
+<div class="stats-strip reveal">
+ <div class="stat-item"><span class="stat-number">75%</span><span class="stat-label">Resumes never reach a human</span></div>
+ <div class="stat-item"><span class="stat-number">8 sec</span><span class="stat-label">Avg recruiter scans a resume</span></div>
+ <div class="stat-item"><span class="stat-number">3.2×</span><span class="stat-label">More interviews after optimization</span></div>
+ <div class="stat-item"><span class="stat-number">₹199</span><span class="stat-label">Less than a Swiggy order</span></div>
+</div>
+<!-- PROBLEM — Emotional Agitation -->
+<section class="section reveal">
+ <p class="section-tag">Sound Familiar?</p>
+ <h2 class="section-title">You're qualified.<br>You're applying.<br>Nobody is calling.</h2>
+ <p class="section-sub">You're not imagining it. The job market didn't get harder — the invisible gatekeepers got smarter. Here's what's actually happening to your resume.</p>
+ <div class="problem-grid">
+ <div class="problem-card">
+ <span class="problem-icon">🤖</span>
+ <h3>A Bot Rejects You Before Any Human Sees You</h3>
+ <p>Every major company — TCS, Infosys, Wipro, startups — runs your resume through an ATS bot first. If your keywords don't match exactly, you're gone. Silently. Automatically. No feedback given.</p>
+ </div>
+ <div class="problem-card">
+ <span class="problem-icon">😶</span>
+ <h3>You Don't Know What's Wrong — So You Keep Applying</h3>
+ <p>Without knowing your ATS score, you're applying blind. Same resume. Same rejection. The definition of insanity — and it's not your fault because nobody tells you what the problem is.</p>
+ </div>
+ <div class="problem-card">
+ <span class="problem-icon">💸</span>
+ <h3>Professional Resume Help Costs More Than a Month's Salary</h3>
+ <p>Resume consultants charge ₹3,000–₹15,000. Career coaches want ₹5,000/hour. For a fresher or someone between jobs, that's simply not an option. Until now.</p>
+ </div>
+ </div>
+</section>
+<!-- SOCIAL PROOF TICKER -->
+<div class="stats-strip reveal" style="background:#161616;">
+ <div class="stat-item"><span class="stat-number" style="color:#52e8a0;">Rohan M.</span><span class="stat-label">Got interview at Google India — 4 days after optimizing</span></div>
+ <div class="stat-item"><span class="stat-number" style="color:#52e8a0;">Sneha T.</span><span class="stat-label">ATS score jumped 31 → 84. 3 calls in one week</span></div>
+ <div class="stat-item"><span class="stat-number" style="color:#52e8a0;">Arjun K.</span><span class="stat-label">Applied to 2 jobs with new resume. Got both callbacks</span></div>
+</div>
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+ <div class="how-inner">
+ <p class="section-tag reveal">How It Works</p>
+ <h2 class="section-title reveal">60 seconds to know exactly<br>why you're being ignored</h2>
+ <div class="steps-grid">
+ <div class="step reveal">
+ <div class="step-num">01</div>
+ <span class="step-free">Free — No Card Needed</span>
+ <h3>Upload Your Resume Right Now</h3>
+ <p>Enter your email, open our Telegram bot in one tap, and upload your PDF resume. That's it. No forms. No sign-ups. No waiting. Just answers.</p>
+ </div>
+ <div class="step reveal">
+ <div class="step-num">02</div>
+ <span class="step-free">Free — Instant Result</span>
+ <h3>Get Your Brutally Honest ATS Score</h3>
+ <p>In under 60 seconds, our AI tells you your ATS score out of 100, the exact keywords you're missing, and the specific reasons recruiters' systems are filtering you out.</p>
+ </div>
+ <div class="step reveal">
+ <div class="step-num">03</div>
+ <h3>Get Fixed — For Less Than a Pizza</h3>
+ <p>If your score is below 70 (most are), we rewrite your entire resume to 80+ ATS score. Real optimization. Delivered to your Telegram in minutes. For ₹199.</p>
+ </div>
+ </div>
+ </div>
+</section>
+<!-- ATS DEMO -->
+<section class="ats-demo reveal">
+ <p class="section-tag">Real Transformation</p>
+ <h2 class="section-title">This is what ₹199<br>actually does to your resume</h2>
+ <p class="section-sub">Real before/after from a software engineer in Bangalore who had applied to 40 jobs with zero callbacks.</p>
+ <div class="demo-container">
+ <div class="score-card score-before">
+ <p class="score-label">Before ResumeGram</p>
+ <div class="score-value">34</div>
+ <p style="font-size:0.76rem;color:#a09b96;margin-bottom:0.3rem;">ATS Score / 100 — Invisible to recruiters</p>
+ <div class="score-bar"><div class="score-fill"></div></div>
+ <div class="score-items">
+ <div class="score-item"><span class="dot dot-red"></span>0 of 18 target keywords present</div>
+ <div class="score-item"><span class="dot dot-red"></span>Date format unreadable by ATS</div>
+ <div class="score-item"><span class="dot dot-red"></span>Job titles don't match industry standard</div>
+ <div class="score-item"><span class="dot dot-red"></span>No quantified achievements anywhere</div>
+ <div class="score-item"><span class="dot dot-red"></span>Skills buried where bots can't parse them</div>
+ </div>
+ </div>
+ <div class="arrow-divider">
+ <div class="arrow-circle">→</div>
+ <p class="arrow-text">₹199<br>· 8 min ·</p>
+ </div>
+ <div class="score-card score-after">
+ <p class="score-label">After ResumeGram</p>
+ <div class="score-value">86</div>
+ <p style="font-size:0.76rem;color:#a09b96;margin-bottom:0.3rem;">ATS Score / 100 — Gets seen. Gets read. Gets calls.</p>
+ <div class="score-bar"><div class="score-fill"></div></div>
+ <div class="score-items">
+ <div class="score-item"><span class="dot dot-green"></span>16 of 18 keywords injected naturally</div>
+ <div class="score-item"><span class="dot dot-green"></span>Formatting 100% ATS-compliant</div>
+ <div class="score-item"><span class="dot dot-green"></span>Titles aligned to job market language</div>
+ <div class="score-item"><span class="dot dot-green"></span>Every role now has measurable impact</div>
+ <div class="score-item"><span class="dot dot-green"></span>Skills section fully bot-readable</div>
+ </div>
+ </div>
+ </div>
+</section>
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+ <div class="pricing-inner">
+ <p class="section-tag reveal">Pricing</p>
+ <h2 class="section-title reveal">You've spent months job hunting.<br>Spend 3 minutes fixing the real problem.</h2>
+ <div class="pricing-grid">
+ <div class="price-card reveal">
+ <p class="price-tier">Start Here</p>
+ <div class="price-amount price-free">Free</div>
+ <p class="price-desc">Find out exactly why you're not getting called. No guessing. No sugar-coating. Just the truth about your resume.</p>
+ <ul class="price-features">
+ <li>Your ATS score out of 100</li>
+ <li>The exact keywords you're missing</li>
+ <li>Top 5 reasons bots reject you</li>
+ <li>Result in your Telegram in 60 seconds</li>
+ </ul>
+ <a href="#" class="btn-secondary btn-outline">Get My Free Score →</a>
+ </div>
+ <div class="price-card featured reveal">
+ <div class="popular-badge">Most Popular</div>
+ <p class="price-tier">Fix It</p>
+ <div class="price-amount price-basic">₹199</div>
+ <p class="price-desc">Less than a Swiggy order. Your entire resume rewritten by AI to score 80+ — so recruiters actually see you.</p>
+ <ul class="price-features">
+ <li>Everything in Free</li>
+ <li>Complete ATS-optimized rewrite</li>
+ <li>Keywords injected naturally throughout</li>
+ <li>Impact-driven bullet points added</li>
+ <li>Delivered as PDF in under 10 minutes</li>
+ </ul>
+ <a href="#" class="btn-secondary btn-filled">Fix My Resume for ₹199 →</a>
+ </div>
+ <div class="price-card reveal">
+ <p class="price-tier">Go All In</p>
+ <div class="price-amount price-pro">₹299</div>
+ <p class="price-desc">Send 3 job links. Get 3 tailored resumes + 3 cover letters. Walk into every application with an unfair advantage.</p>
+ <ul class="price-features">
+ <li>Everything in Fix It</li>
+ <li>Paste 3 job posting links</li>
+ <li>3 versions tailored to each role</li>
+ <li>3 cover letters written for each job</li>
+ <li>Maximum ATS match — highest callback rate</li>
+ </ul>
+ <a href="#" class="btn-secondary btn-blue">Get the Unfair Advantage →</a>
+ </div>
+ </div>
+ <p style="text-align:center;margin-top:2rem;font-size:0.82rem;color:#a09b96;">
+ 🔒 Secure payment via Razorpay · UPI, Cards, Net Banking accepted · Resume deleted after delivery
+ </p>
+ </div>
+</section>
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+ <p class="section-tag reveal">Real People. Real Results.</p>
+ <h2 class="section-title reveal">They were exactly where<br>you are right now</h2>
+ <div class="testi-grid">
+ <div class="testi-card reveal">
+ <div class="stars">★★★★★</div>
+ <p class="testi-text">"I had applied to 60+ companies in 3 months. Zero callbacks. My ATS score was 31. After ResumeGram rewrote it, I got 4 interview calls in the first week. I genuinely cried. ₹199 changed everything."</p>
+ <div class="testi-score-tag">↑ ATS Score 31 → 83 · 4 calls in 7 days</div>
+ <div class="testi-author">
+ <div class="testi-avatar av1">RK</div>
+ <div><p class="testi-name">Rahul Kumar</p><p class="testi-role">Software Engineer · Pune · Placed at TCS Digital</p></div>
+ </div>
+ </div>
+ <div class="testi-card reveal">
+ <div class="stars">★★★★★</div>
+ <p class="testi-text">"I'm an MBA grad who was embarrassed to tell my parents I had no job offer after 4 months. ResumeGram showed me my score was 28 — no wonder. The rewrite got me shortlisted at Deloitte and KPMG in the same week."</p>
+ <div class="testi-score-tag">↑ ATS Score 28 → 81 · Shortlisted at 2 Big 4 firms</div>
+ <div class="testi-author">
+ <div class="testi-avatar av2">PS</div>
+ <div><p class="testi-name">Priya Sharma</p><p class="testi-role">MBA Graduate · Delhi · Now at Deloitte</p></div>
+ </div>
+ </div>
+ <div class="testi-card reveal">
+ <div class="stars">★★★★★</div>
+ <p class="testi-text">"The Pro plan felt like cheating honestly. I sent 3 job links, got back 3 perfectly tailored resumes and cover letters in 10 minutes. Applied to Infosys, Wipro and a startup. All three called me back. At ₹299 this is ridiculous value."</p>
+ <div class="testi-score-tag">↑ ATS Score 29 → 88 · 3 for 3 on callbacks</div>
+ <div class="testi-author">
+ <div class="testi-avatar av3">AM</div>
+ <div><p class="testi-name">Arjun Mehta</p><p class="testi-role">ECE Graduate · Bangalore · 3 offers in hand</p></div>
+ </div>
+ </div>
+ </div>
+</section>
+<!-- URGENCY / IDENTITY SECTION -->
+<section class="section reveal" style="text-align:center;max-width:720px;">
+ <p class="section-tag">A Hard Truth</p>
+ <h2 class="section-title">Every day you wait,<br>someone else gets<br>your interview slot</h2>
+ <p class="section-sub" style="max-width:100%;text-align:center;margin:0 auto 2rem;">
+ Recruiters don't wait. Job slots fill up. The company that would have loved you hires someone else — not because they were more qualified, but because their resume was seen and yours wasn't. This is fixable. Right now. In 60 seconds.
+ </p>
+ <a href="#" class="btn-primary" style="font-size:0.93rem;padding:0.95rem 2rem;margin:0 auto;display:inline-flex;">
+ Stop Losing Interviews to a Robot →
+ </a>
+</section>
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+ <div class="faq-inner">
+ <p class="section-tag reveal">FAQ</p>
+ <h2 class="section-title reveal">Everything you're wondering</h2>
+ <div class="faq-list">
+ <div class="faq-item">
+ <button class="faq-q" onclick="toggleFaq(this)">Is my resume data safe and private?<span class="faq-icon">+</span></button>
+ <div class="faq-a">Your resume is processed instantly and permanently deleted from our systems after delivery. We never store, share, or sell your personal data. Your privacy is non-negotiable.</div>
+ </div>
+ <div class="faq-item">
+ <button class="faq-q" onclick="toggleFaq(this)">How long does the optimization actually take?<span class="faq-icon">+</span></button>
+ <div class="faq-a">Your free ATS score lands in under 60 seconds. The full paid rewrite (₹199 or ₹299) is delivered directly to your Telegram chat within 5–10 minutes. No waiting. No back-and-forth.</div>
+ </div>
+ <div class="faq-item">
+ <button class="faq-q" onclick="toggleFaq(this)">My resume looks great visually. Why would I have a low score?<span class="faq-icon">+</span></button>
+ <div class="faq-a">This is the most common misconception. ATS bots cannot read design, colours, columns, or graphics. A beautiful resume can score 20/100 on ATS while a plain, keyword-optimized one scores 90. Design impresses humans. Keywords get you to humans.</div>
+ </div>
+ <div class="faq-item">
+ <button class="faq-q" onclick="toggleFaq(this)">Will this work for freshers with no experience?<span class="faq-icon">+</span></button>
+ <div class="faq-a">Absolutely — freshers actually benefit the most. Our AI knows exactly what keywords, project descriptions, and formatting freshers need to beat ATS at top companies like TCS, Infosys, Wipro, and top startups.</div>
+ </div>
+ <div class="faq-item">
+ <button class="faq-q" onclick="toggleFaq(this)">What if I'm not happy with the result?<span class="faq-icon">+</span></button>
+ <div class="faq-a">If your ATS score doesn't improve significantly after optimization, message us directly on Telegram and we'll fix it immediately — no questions asked. Your result matters more than our ₹199.</div>
+ </div>
+ <div class="faq-item">
+ <button class="faq-q" onclick="toggleFaq(this)">How do I pay? Is it secure?<span class="faq-icon">+</span></button>
+ <div class="faq-a">Payment is handled by Razorpay — India's most trusted payment gateway. UPI, all debit/credit cards, net banking, and wallets accepted. Takes 30 seconds. Optimization begins the moment payment is confirmed.</div>
+ </div>
+ </div>
+ </div>
+</section>
+<!-- FINAL CTA -->
+<section class="cta-section">
+ <div class="cta-bg"></div>
+ <h2>Your next interview call<br>is <em style="color:var(--accent);font-style:normal;">60 seconds away.</em></h2>
+ <p>Find out your ATS score for free. No credit card. No fluff. Just the truth — and a way to fix it.</p>
+ <div class="cta-buttons">
+ <a href="#" class="btn-primary" style="font-size:0.93rem;padding:0.95rem 1.8rem;">Get My Free ATS Score Now →</a>
+ <a href="#pricing" class="btn-secondary btn-outline" style="padding:0.95rem 1.8rem;display:inline-flex;align-items:center;width:auto;">See Pricing</a>
+ </div>
+ <p style="margin-top:1.5rem;font-size:0.78rem;color:#6b6760;">
+ Trusted by 2,400+ job seekers this month · Takes 60 seconds · Completely free to start
+ </p>
+</section>
+<!-- FOOTER -->
+<footer>
+ <div class="footer-logo">Resume<span>Gram</span></div>
+ <ul class="footer-links">
+ <li><a href="#">Privacy Policy</a></li>
+ <li><a href="#">Terms of Service</a></li>
+ <li><a href="#">Contact</a></li>
+ </ul>
+ <p class="footer-copy">© 2025 ResumeGram.co · Built for India's job seekers</p>
+</footer>
+<script>
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach((entry, i) => {
+ if (entry.isIntersecting) {
+ setTimeout(() => entry.target.classList.add('visible'), i * 70);
+ observer.unobserve(entry.target);
+ }
+ });
+ }, { threshold: 0.08 });
+ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ function toggleFaq(btn) {
+ const item = btn.parentElement;
+ const isOpen = item.classList.contains('open');
+ document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+ if (!isOpen) item.classList.add('open');
+ }
+ document.getElementById('heroBtn').addEventListener('click', function(e) {
+ e.preventDefault();
+ const email = document.getElementById('emailInput').value;
+ const input = document.getElementById('emailInput');
+ if (!email || !email.includes('@')) {
+ input.style.borderColor = '#e85252';
+ input.placeholder = 'Please enter a valid email first';
+ return;
+ }
+ input.style.borderColor = '#52e8a0';
+ this.textContent = '✓ Opening Telegram...';
+ this.style.background = '#52e8a0';
+ this.style.color = '#080808';
+ setTimeout(() => window.open('https://t.me/Resumegram_Bot', '_blank'), 700);
+ });
+</script>
+</body>
+</html>
