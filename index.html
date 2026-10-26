@@ -637,7 +637,7 @@
  <li><a href="#how">How it works</a></li>
  <li><a href="#pricing">Pricing</a></li>
  <li><a href="#faq">FAQ</a></li>
- <li><a href="#" class="nav-cta">Check My Score Free →</a></li>
+ <li><a href="https://t.me/Resumegram_Bot" target="_blank" rel="noopener noreferrer" class="nav-cta">Check My Score Free →</a></li>
  </ul>
 </nav>
 <!-- HERO -->
@@ -649,13 +649,12 @@
  Your resume is being <strong>rejected by a robot</strong> before any human ever reads it. ATS systems silently filter out 75% of applicants. Find out your score — free, in 60 seconds.
  </p>
  <div class="email-form">
- <input type="email" placeholder="Enter your email to get started" id="emailInput" />
- <button class="btn-primary" id="heroBtn">
+ <a class="btn-primary" id="heroBtn" href="https://t.me/Resumegram_Bot" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
  Find Out My ATS Score — Free
  <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
  </svg>
- </button>
+ </a>
  </div>
  <p class="hero-note">Takes 60 seconds · No credit card · Your resume is <strong>never stored</strong></p>
  <div class="tg-badge">
@@ -709,7 +708,7 @@
  <div class="step-num">01</div>
  <span class="step-free">Free — No Card Needed</span>
  <h3>Upload Your Resume Right Now</h3>
- <p>Enter your email, open our Telegram bot in one tap, and upload your PDF resume. That's it. No forms. No sign-ups. No waiting. Just answers.</p>
+ <p>Open our Telegram bot in one tap, share your email there, and upload your PDF resume. Your email is collected only once, inside Telegram.</p>
  </div>
  <div class="step reveal">
  <div class="step-num">02</div>
@@ -779,7 +778,7 @@
  <li>Top 5 reasons bots reject you</li>
  <li>Result in your Telegram in 60 seconds</li>
  </ul>
- <a href="#" class="btn-secondary btn-outline">Get My Free Score →</a>
+ <a href="https://t.me/Resumegram_Bot" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-outline">Get My Free Score →</a>
  </div>
  <div class="price-card featured reveal">
  <div class="popular-badge">Most Popular</div>
@@ -793,7 +792,7 @@
  <li>Impact-driven bullet points added</li>
  <li>Delivered as PDF in under 10 minutes</li>
  </ul>
- <a href="#" class="btn-secondary btn-filled">Fix My Resume for ₹199 →</a>
+ <a href="https://t.me/Resumegram_Bot" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-filled">Fix My Resume for ₹199 →</a>
  </div>
  <div class="price-card reveal">
  <p class="price-tier">Go All In</p>
@@ -806,7 +805,7 @@
  <li>3 cover letters written for each job</li>
  <li>Maximum ATS match — highest callback rate</li>
  </ul>
- <a href="#" class="btn-secondary btn-blue">Get the Unfair Advantage →</a>
+ <a href="https://t.me/Resumegram_Bot" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-blue">Get the Unfair Advantage →</a>
  </div>
  </div>
  <p style="text-align:center;margin-top:2rem;font-size:0.82rem;color:#a09b96;">
@@ -855,7 +854,7 @@
  <p class="section-sub" style="max-width:100%;text-align:center;margin:0 auto 2rem;">
  Recruiters don't wait. Job slots fill up. The company that would have loved you hires someone else — not because they were more qualified, but because their resume was seen and yours wasn't. This is fixable. Right now. In 60 seconds.
  </p>
- <a href="#" class="btn-primary" style="font-size:0.93rem;padding:0.95rem 2rem;margin:0 auto;display:inline-flex;">
+ <a href="https://t.me/Resumegram_Bot" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.93rem;padding:0.95rem 2rem;margin:0 auto;display:inline-flex;">
  Stop Losing Interviews to a Robot →
  </a>
 </section>
@@ -898,7 +897,7 @@
  <h2>Your next interview call<br>is <em style="color:var(--accent);font-style:normal;">60 seconds away.</em></h2>
  <p>Find out your ATS score for free. No credit card. No fluff. Just the truth — and a way to fix it.</p>
  <div class="cta-buttons">
- <a href="#" class="btn-primary" style="font-size:0.93rem;padding:0.95rem 1.8rem;">Get My Free ATS Score Now →</a>
+ <a href="https://t.me/Resumegram_Bot" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.93rem;padding:0.95rem 1.8rem;">Get My Free ATS Score Now →</a>
  <a href="#pricing" class="btn-secondary btn-outline" style="padding:0.95rem 1.8rem;display:inline-flex;align-items:center;width:auto;">See Pricing</a>
  </div>
  <p style="margin-top:1.5rem;font-size:0.78rem;color:#6b6760;">
@@ -931,21 +930,7 @@
  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
  if (!isOpen) item.classList.add('open');
  }
- document.getElementById('heroBtn').addEventListener('click', function(e) {
- e.preventDefault();
- const email = document.getElementById('emailInput').value;
- const input = document.getElementById('emailInput');
- if (!email || !email.includes('@')) {
- input.style.borderColor = '#e85252';
- input.placeholder = 'Please enter a valid email first';
- return;
- }
- input.style.borderColor = '#52e8a0';
- this.textContent = '✓ Opening Telegram...';
- this.style.background = '#52e8a0';
- this.style.color = '#080808';
- setTimeout(() => window.open('https://t.me/Resumegram_Bot', '_blank'), 700);
- });
+
 </script>
 </body>
 </html>
